@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+
+<div id="content" class="col-lg-10 col-sm-10" >
+
+<div class="row">
+<div class="box col-md-6">
+<div class="box-inner">
+<div class="box-header well" data-original-title="">
+<h2>Out Of Stock : {{total_out_of_stock}} Books</h2>
+</div>
+<div class="box-content" style="display: block;">
+<table class="table">
+<thead>
+<tr>
+<th>Category</th>
+ <th>Count of Books</th>
+</tr>
+</thead>
+<tbody>
+{%for i in categorys %}
+<tr> 
+
+<td>{{i.name}}</td>
+<td class="center">{{i.get_no_of_stockout}}</td>
+</tr>
+{%endfor%}
+
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+<div class="box col-md-6">
+<div class="box-inner">
+<div class="box-header well" data-original-title="">
+<h2>Total due : {{user_due_books}} </h2>
+</div>
+<div class="box-content">
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Person</th>
+<th>No of books due</th>
+</tr>
+</thead>
+<tbody>
+{%for i in users %}
+<tr>
+<td class="center">{{i}}</td>
+<td class="center">{{i.get_dues.count}}</td>
+</td>
+</tr>
+{%endfor%}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="box col-md-6">
+<div class="box-inner">
+<div class="box-header well" data-original-title="">
+<h2>New Customers From Last 7 Days </h2>
+</div>
+<div class="box-content">
+<table class="table table-striped">
+<thead>
+<tr>
+<th> Name </th>
+<th>Mobile Number</th>
+<th>Customer Id</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+{%for i in new_customers %}
+<tr>
+<td class="center">{{i.name}}</td>
+<td class="center">{{i.mobile_number}}</td>
+<td class="center">{{i.customer_id}}</td>
+</td>
+</tr>
+{%endfor%}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+{% endblock %}

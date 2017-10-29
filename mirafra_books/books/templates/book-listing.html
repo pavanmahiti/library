@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<div id="content" class="col-lg-10 col-sm-10" style="width:100%">
+  <div class="row">
+    <div class="box col-md-12">
+      <div class="box-inner">
+	<div class="box-header well" data-original-title="">
+          <h2><i class="glyphicon"></i>Books</h2>
+	</div>
+
+
+	<div class="box-content">
+          {% if object_list %}
+          <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+            <thead>
+              <tr>
+		<th>Title</th>
+		<th>Stock</th>
+		<th>Author</th>
+		<th>Category</th>
+		<th>Shelf</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for obj in object_list %}
+              <tr>
+		<td>{{ obj.title }}</td>
+		<td>{{ obj.available_stock }}/ {{obj.stock}}</td>
+		<td>{{ obj.author }}</td>
+		<td>{{ obj.category.name }}</td>
+		<td>{{ obj.shelf.serial_number }}</td>
+              </tr>
+	      {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <div class="alert alert-info">
+            No Records found.
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -36,21 +36,21 @@
 <div class="box col-md-6">
 <div class="box-inner">
 <div class="box-header well" data-original-title="">
-<h2>Total due : {{user_due_books}} </h2>
+<h2>Books Borrowed : {{borrowed_users_books}} </h2>
 </div>
 <div class="box-content">
 <table class="table table-striped">
 <thead>
 <tr>
 <th>Person</th>
-<th>No of books due</th>
+<th>No of Books </th>
 </tr>
 </thead>
 <tbody>
-{%for i in users %}
+{%for i in borrowed_users %}
 <tr>
 <td class="center">{{i}}</td>
-<td class="center">{{i.get_dues.count}}</td>
+<td class="center">{{i.get_borrowed.count}}</td>
 </td>
 </tr>
 {%endfor%}
@@ -89,6 +89,36 @@
 </div>
 </div>
 </div>
+
+
+<div class="box col-md-6">
+<div class="box-inner">
+<div class="box-header well" data-original-title="">
+<h2> Due Books : {{user_due_books}} </h2>
+</div>
+<div class="box-content">
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Person</th>
+<th>No of Books </th>
+</tr>
+</thead>
+<tbody>
+{%for i in due_users %}
+<tr>
+<td class="center">{{i}}</td>
+<td class="center">{{i.get_dues.count}}</td>
+</td>
+</tr>
+{%endfor%}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
 
 </div>
 </div>

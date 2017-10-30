@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^borrow-book/$',BorrowBook.as_view()),
     url(r'^list-of-books/$',BookList.as_view()),
     url(r'^list-of-borrow_books/$',BorrowList.as_view()),
+    url(r'^return-borrow-book/(?P<qid>.*)/$',return_book_date),
     url(r'.*css/bootstrap-cerulean.min.css$',
         lambda request: HttpResponseRedirect(
             '/static/charisma/css/bootstrap-cerulean.min.css')),

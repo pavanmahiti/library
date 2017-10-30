@@ -16,6 +16,9 @@ class Customer(BaseContent):
         return self.name
     
     def get_dues(self):
+        return self.borrow_set.filter(due_date__lte=datetime.now(), return_date=None)
+    
+    def get_borrowed(self):
         return self.borrow_set.filter(due_date__gte=datetime.now(), return_date=None)
         
 class Borrow(BaseContent):
@@ -31,4 +34,9 @@ class Borrow(BaseContent):
     
     @staticmethod
     def get_due_borrows():
+        return Borrow.objects.filter(due_date__lte=datetime.now(), return_date=None)
+
+
+    @staticmethod
+    def get_borrowed_books():
         return Borrow.objects.filter(due_date__gte=datetime.now(), return_date=None)

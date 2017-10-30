@@ -1,5 +1,4 @@
 """mirafra_books URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
 Examples:
@@ -16,15 +15,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.http import HttpResponseRedirect
-from books.views import *
+from books.views import dashboard, BorrowBook, BookList, BorrowList, return_book_date
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',dashboard),
-    url(r'^borrow-book/$',BorrowBook.as_view()),
-    url(r'^list-of-books/$',BookList.as_view()),
-    url(r'^list-of-borrow_books/$',BorrowList.as_view()),
-    url(r'^return-borrow-book/(?P<qid>.*)/$',return_book_date),
+    url(r'^$', dashboard),
+    url(r'^borrow-book/$', BorrowBook.as_view()),
+    url(r'^list-of-books/$', BookList.as_view()),
+    url(r'^list-of-borrow_books/$', BorrowList.as_view()),
+    url(r'^return-borrow-book/(?P<qid>.*)/$', return_book_date),
     url(r'.*css/bootstrap-cerulean.min.css$',
         lambda request: HttpResponseRedirect(
             '/static/charisma/css/bootstrap-cerulean.min.css')),

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.contrib import admin
-
 # Register your models here.
-from books.models import *
-from customer.models import *
+from books.models import Category, Shelf, Book
+from customer.models import Customer, Borrow
+
+
 def register(mdl):
 
     class MdlAdmin(admin.ModelAdmin):
@@ -34,8 +34,9 @@ def get_tabular(mdl):
 
 
 for i in [
-        Category,Shelf,Book,Customer,Borrow
+        Category, Shelf, Book, Customer, Borrow
 ]:
     register(i)
-    
-    
+
+
+
